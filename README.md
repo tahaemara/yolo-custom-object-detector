@@ -12,7 +12,7 @@ In this repository, I put the code and the dataset of my rubik's cube to buildin
 	<tr> <td>RubixDetector.java</td> <td>Real-time rubik's cube detector, it reads a stream of frames from the webcam the then detects the rubik's cube in each one.</td> </tr> 
 	<tr> <td>YoloModel.java</td> <td>Loading the trained model by the class YoloTrainer and make the detection given an image.</td> </tr> 
 	<tr> <td>NonMaxSuppression.java</td> <td>Implementation of the non-maximum suppression algorithm to cope the problem of detecting the same object multiple times by the yolo algorithm.</td> </tr> 
-		           	 <tr> <td>model.data</td> <td>Pre-trained model to detect rubik's cube, can be downloaded from <a tyle="color:#337ab7;"   target="_blank" href="https://drive.google.com/file/d/1IN0lyBT8maq-dhtG-dvIpLEdnAOcoAQu/view?usp=sharing">here</a>.</td> </tr> 
+		           	 <tr> <td>model.data</td> <td>Pre-trained model to detect rubik's cube, can be downloaded from <a tyle="color:#337ab7;"    target="_blank" href="https://drive.google.com/file/d/1IN0lyBT8maq-dhtG-dvIpLEdnAOcoAQu/view?usp=sharing">here</a>.</td> </tr> 
 
 </tbody></table>
 
