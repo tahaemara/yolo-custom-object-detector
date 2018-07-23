@@ -1,0 +1,26 @@
+<annotation>
+	<folder>images</folder>
+	<filename>aimage202.jpg</filename>
+	<path>C:\Users\Emaraic\Documents\Dataset\images\aimage202.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>416</width>
+		<height>416</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>Rubix Cube</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>184</xmin>
+			<ymin>7</ymin>
+			<xmax>400</xmax>
+			<ymax>290</ymax>
+		</bndbox>
+	</object>
+</annotation>

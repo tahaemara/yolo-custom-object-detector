@@ -1,0 +1,26 @@
+<annotation>
+	<folder>images</folder>
+	<filename>nimage57 (2).jpg</filename>
+	<path>C:\Users\Emaraic\Documents\Dataset\images\nimage57 (2).jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>416</width>
+		<height>416</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>Rubix Cube</name>
+		<pose>Unspecified</pose>
+		<truncated>1</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>181</xmin>
+			<ymin>1</ymin>
+			<xmax>295</xmax>
+			<ymax>149</ymax>
+		</bndbox>
+	</object>
+</annotation>

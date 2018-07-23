@@ -1,0 +1,26 @@
+<annotation>
+	<folder>images</folder>
+	<filename>oimage43.jpg</filename>
+	<path>C:\Users\Emaraic\Documents\Dataset\images\oimage43.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>416</width>
+		<height>416</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>Rubix Cube</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>125</xmin>
+			<ymin>90</ymin>
+			<xmax>177</xmax>
+			<ymax>179</ymax>
+		</bndbox>
+	</object>
+</annotation>
