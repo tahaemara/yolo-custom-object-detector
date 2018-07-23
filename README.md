@@ -1,2 +1,3 @@
-# yolo-custom-object-detector
-Training Yolo on custom dataset to detect Rubik's Cube
+# Building a custom object detector using YOLO
+
+Building a custom object detector using the tiny YOLO v2 
