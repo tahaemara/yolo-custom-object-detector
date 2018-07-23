@@ -14,7 +14,7 @@ In this repository, I put the code and the dataset of my rubik's cube to buildin
 	<tr> <td>YoloModel.java</td> <td>Loading the trained model by the class YoloTrainer and make the detection given an image.</td> </tr> 
 	<tr> <td>NonMaxSuppression.java</td> <td>Implementation of the non-maximum suppression algorithm to cope the problem of detecting the same object multiple times by the yolo algorithm.</td> </tr> 
 	 </tbody></table>
-   
+   <br><br>
    
    
    
