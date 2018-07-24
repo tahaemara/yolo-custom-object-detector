@@ -17,12 +17,19 @@ In this repository, I put the code and the dataset of my rubik's cube to buildin
 </tbody></table>
 
 <br><br>
+
+### Video 
+
+https://www.youtube.com/watch?v=kacQ4vSrEsU
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/kacQ4vSrEsU/3.jpg)](https://www.youtube.com/watch?v=kacQ4vSrEsU)
    
-**Screenshot**
+   
+### Screenshot
 <p align="center">
 <img src="https://github.com/tahaemara/yolo-custom-object-detector/blob/master/assets/output.png?raw=true" alt="" data-canonical-src="https://github.com/tahaemara/yolo-custom-object-detector/blob/master/assets/output.png?raw=true" /></p>
    
-**For more info**
+### For more info
 
 Comming Sooooon
 
