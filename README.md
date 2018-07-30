@@ -18,6 +18,10 @@ In this repository, I put the code and the dataset of my rubik's cube to buildin
 
 <br><br>
 
+### For more info
+
+http://emaraic.com/blog/yolo-custom-object-detector
+
 ### Video 
 
 https://www.youtube.com/watch?v=kacQ4vSrEsU
@@ -29,8 +33,4 @@ https://www.youtube.com/watch?v=kacQ4vSrEsU
 <p align="center">
 <img src="https://github.com/tahaemara/yolo-custom-object-detector/blob/master/assets/output.png?raw=true" alt="" data-canonical-src="https://github.com/tahaemara/yolo-custom-object-detector/blob/master/assets/output.png?raw=true" /></p>
    
-### For more info
-
-Comming Sooooon
-
 
