@@ -22,6 +22,11 @@ In this repository, I put the code and the dataset of my rubik's cube to buildin
 
 http://emaraic.com/blog/yolo-custom-object-detector
 
+### Note 
+
+In case you have a GPU, you can uncomment the CUDA dependency in pom.xml file.
+https://deeplearning4j.org/docs/latest/deeplearning4j-config-cudnn
+
 ### Video 
 
 https://www.youtube.com/watch?v=kacQ4vSrEsU
