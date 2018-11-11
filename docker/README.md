@@ -6,7 +6,7 @@ Dockerfile to build a docker image contain Darknet, OPENCV, and CUDA. Both Darkn
 <ol>
 
 <li>Install nvidia docker by following the instructions <a href="https://github.com/NVIDIA/nvidia-docker/blob/master/README.md">here</a>.</li>
-<li>Change directory to Dokerfile location.</li>
+<li>Change directory to Dockerfile location.</li>
 <li>Build the docker image  <pre>sudo nvidia-docker build -t yolo3-opencv-cuda .</pre></li>
 </ol>
 
