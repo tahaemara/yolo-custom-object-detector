@@ -1,6 +1,6 @@
 # Building a custom object detector using YOLOv3 in python
 
-In this section, I put the code and the dataset of my rubik's cube to building a custom object detector to detect rubik's cube using YOLOv3 in Python training process is done using the Darknet framework and the real-time detector implemented with OpenCV DNN module.
+In this section, I put the code and the dataset of my rubik's cube to building a custom object detector to detect rubik's cube using YOLOv3 in Python. Training process is done using the Darknet framework and the real-time detector implemented with OpenCV DNN module.
 
   In the next table, I briefly described the contents of this section.
 
