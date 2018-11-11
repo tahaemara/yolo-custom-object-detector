@@ -10,9 +10,7 @@ In this section, I put the code and the dataset of my rubik's cube to building a
      	 <tr> <td>Dataset</td> <td>Folder contains images and labels.</td> </tr> 
 <tr> <td>generate.py</td> <td></td>Script to generate train.txt and test.txt files.</tr>  
 	 <tr> <td>custom</td> <td>Folder contains needed files (train.txt, test.txt, objects.names, yolov3-tiny.cfg, and trainer.data) for training. This folder must be pasted on the main directory of darknet</td> </tr> 
-	<tr> <td>yolo_opencv.java</td> <td>Real-time rubik's cube detector, it reads a stream of frames from the webcam the then detects the rubik's cube in each one.</td> </tr> 
-	
-		           	 <tr> <td>model.data</td> <td>Pre-trained model to detect rubik's cube, can be downloaded from <a tyle="color:#337ab7;"    target="_blank" href="https://drive.google.com/file/d/1jBM9FzRSCVvOoBptUJSF51rvLJ_Tceu_/view?usp=sharing">here</a>.</td> </tr> 
+	<tr> <td>yolo_opencv.java</td> <td>Real-time rubik's cube detector, it reads a stream of frames from the webcam the then detects the rubik's cube in each one.</td> </tr> <tr> <td>model.data</td> <td>Pre-trained model to detect rubik's cube, can be downloaded from <a tyle="color:#337ab7;"    target="_blank" href="https://drive.google.com/file/d/1jBM9FzRSCVvOoBptUJSF51rvLJ_Tceu_/view?usp=sharing">here</a>.</td> </tr> 
 
 </tbody></table>
 
