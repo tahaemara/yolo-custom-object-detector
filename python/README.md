@@ -22,9 +22,9 @@ http://emaraic.com/blog/yolov3-custom-object-detector
 
 ### Video 
 
-https://www.youtube.com/watch?v=kacQ4vSrEsU
+https://www.youtube.com/watch?v=tlVfsgRokcQ
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/kacQ4vSrEsU/3.jpg)](https://www.youtube.com/watch?v=kacQ4vSrEsU)
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/tlVfsgRokcQ/3.jpg)](https://www.youtube.com/watch?v=tlVfsgRokcQ)
    
    
    
