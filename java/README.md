@@ -36,6 +36,6 @@ https://www.youtube.com/watch?v=kacQ4vSrEsU
    
 ### Screenshot
 <p align="center">
-<img src="https://github.com/tahaemara/yolo-custom-object-detector/blob/master/assets/output.png?raw=true" alt="" data-canonical-src="https://github.com/tahaemara/yolo-custom-object-detector/blob/master/assets/output.png?raw=true" /></p>
+<img src="https://github.com/tahaemara/yolo-custom-object-detector/blob/master/java/assets/output.png?raw=true" alt="" data-canonical-src="https://github.com/tahaemara/yolo-custom-object-detector/blob/master/java/assets/output.png?raw=true" /></p>
    
 
