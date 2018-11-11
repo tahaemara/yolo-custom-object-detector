@@ -1,4 +1,4 @@
-# Docker Image for Darknet, OpenCV, and CUDA.
+# Docker Image for Darknet, OpenCV 3.3, and CUDA.
 
 Dockerfile to build a docker image contain Darknet, OPENCV, and CUDA. Both Darknet and Opencv were compiled with CUDA.
 
