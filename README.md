@@ -1,4 +1,9 @@
 # Building a custom object detector using YOLO
 
-In this repository, I put the code and the dataset of my rubik's cube to building a custom object detector to detect it. I implemented the detector with YOLOv2 in <strong>Java</strong> using Deeplearning4j library and in <strong>Python</strong> using YOLOv3, training process is done using the Darknet framework and the real-time detector implemented with OpenCV DNN module.	
+This repository contains the code and the dataset for the tutorials (<a target="_blank" style="color:#337ab7;" href="http://emaraic.com/blog/yolo-custom-object-detector">Part1</a> and <a target="_blank" style="color:#337ab7;" href="http://emaraic.com/blog/yolov3-custom-object-detector">Part2</a>) I wrote about making custome object detector using YOLO in Java and Python. It also contains a dockerfile to build a docker image contains darknet framwork, OpenCV 3.3, and CUDA.  
+
+
+
+
+
  
