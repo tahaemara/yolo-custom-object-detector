@@ -1,7 +1,11 @@
 import cv2
 import argparse
 import numpy as np
+import websocket
+import json
 
+# ws = websocket.create_connection("ws://192.168.0.107:9020/locomotion")
+msg = {"l":0, "r":0}
 ap = argparse.ArgumentParser()
 ap.add_argument('-c', '--config', 
                 help = 'path to config file', default="/path/to/yolov3-tiny.cfg")
@@ -17,6 +21,7 @@ def getOutputsNames(net):
     layersNames = net.getLayerNames()
     return [layersNames[i[0] - 1] for i in net.getUnconnectedOutLayers()]
 
+imgsize = (700,700)
 
 # Darw a rectangle surrounding the object and its class name 
 def draw_pred(img, class_id, confidence, x, y, x_plus_w, y_plus_h):
@@ -31,7 +36,7 @@ def draw_pred(img, class_id, confidence, x, y, x_plus_w, y_plus_h):
     
 # Define a window to show the cam stream on it
 window_title= "Rubiks Detector"   
-cv2.namedWindow(window_title, cv2.WINDOW_NORMAL)
+# cv2.namedWindow(window_title, cv2.WINDOW_NORMAL)
 
 
 # Load names classes
@@ -53,9 +58,9 @@ cap = cv2.VideoCapture(0)
 while cv2.waitKey(1) < 0 or False:
     
     hasframe, image = cap.read()
-    image=cv2.resize(image, (416, 416)) 
+    image=cv2.resize(image, imgsize) 
     
-    blob = cv2.dnn.blobFromImage(image, 1.0/255.0, (416,416), [0,0,0], True, crop=False)
+    blob = cv2.dnn.blobFromImage(image, 1.0/255.0, imgsize, [0,0,0], True, crop=False)
     Width = image.shape[1]
     Height = image.shape[0]
     net.setInput(blob)
@@ -107,11 +112,35 @@ while cv2.waitKey(1) < 0 or False:
         y = box[1]
         w = box[2]
         h = box[3]
-        draw_pred(image, class_ids[i], confidences[i], round(x), round(y), round(x+w), round(y+h))
+        # draw_pred(image, class_ids[i], confidences[i], round(x), round(y), round(x+w), round(y+h))
+        if x<imgsize[0]/3:
+            msg["l"] = -0.5
+            msg["r"] = 0.5
+            st = str(msg)
+            a = ' '.join(format(ord(x),'b') for x in st)
+            # ws.send(json.dumps(msg))
+            print(a)
+            #print("left")
+        elif x>imgsize[0]*0.6666:
+            msg["l"] = 0.5
+            msg["r"] = -0.5
+            st = str(msg)
+            a = ' '.join(format(ord(x),'b') for x in st)
+            # ws.send(json.dumps(msg))
+            print(a)
+            #print("right")
+        else:
+            msg["l"] = 0
+            msg["r"] = 0
+            st = str(msg)
+            a = ' '.join(format(ord(x),'b') for x in st)
+            # ws.send(json.dumps(msg))
+            print(a)
+            #print("straing")
    
     # Put efficiency information.
     t, _ = net.getPerfProfile()
     label = 'Inference time: %.2f ms' % (t * 1000.0 / cv2.getTickFrequency())
     cv2.putText(image, label, (0, 15), cv2.FONT_HERSHEY_SIMPLEX, .6, (255, 0, 0))
     
-    cv2.imshow(window_title, image)
+    # cv2.imshow(window_title, image)
