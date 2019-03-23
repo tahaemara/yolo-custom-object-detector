@@ -4,16 +4,20 @@ import numpy as np
 import websocket
 import json
 
-# ws = websocket.create_connection("ws://192.168.0.107:9020/locomotion")
-msg = {"l":0, "r":0}
+imgsize = (700,700)
+
 ap = argparse.ArgumentParser()
 ap.add_argument('-c', '--config', 
-                help = 'path to config file', default="/path/to/yolov3-tiny.cfg")
+                help = 'path to config file', default="custom/yolov3-tiny.cfg")
 ap.add_argument('-w', '--weights', 
-                help = 'path to pre-trained weights', default="/path/to/yolov3-tiny_final.weights")
+                help = 'path to pre-trained weights', default="../backup/yolov3-tiny.backup")
 ap.add_argument('-cl', '--classes', 
-                help = 'path to objects.names',default="/path/to/objects.names")
+                help = 'path to objects.names',default="custom/objects.names")
 args = ap.parse_args()
+
+# Connect to the Rover control server through a websocket
+ws = websocket.create_connection("ws://192.168.0.107:9020/locomotion")
+WheelControl = {"l":0, "r":0}
 
 
 # Get names of output layers, output for YOLOv3 is ['yolo_16', 'yolo_23']
@@ -21,23 +25,9 @@ def getOutputsNames(net):
     layersNames = net.getLayerNames()
     return [layersNames[i[0] - 1] for i in net.getUnconnectedOutLayers()]
 
-imgsize = (700,700)
-
-# Darw a rectangle surrounding the object and its class name 
-def draw_pred(img, class_id, confidence, x, y, x_plus_w, y_plus_h):
-
-    label = str(classes[class_id])
-
-    color = COLORS[class_id]
-
-    cv2.rectangle(img, (x,y), (x_plus_w,y_plus_h), color, 2)
-
-    cv2.putText(img, label, (x-10,y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
-    
-# Define a window to show the cam stream on it
-window_title= "Rubiks Detector"   
-# cv2.namedWindow(window_title, cv2.WINDOW_NORMAL)
-
+# Send a message to the Server through the WebSocket telling the rover to turn in a certain way
+def SendMsgToServer(message):
+    ws.send(json.dumps(message))
 
 # Load names classes
 classes = None
@@ -56,7 +46,7 @@ cap = cv2.VideoCapture(0)
 
 
 while cv2.waitKey(1) < 0 or False:
-    
+
     hasframe, image = cap.read()
     image=cv2.resize(image, imgsize) 
     
@@ -112,31 +102,20 @@ while cv2.waitKey(1) < 0 or False:
         y = box[1]
         w = box[2]
         h = box[3]
-        # draw_pred(image, class_ids[i], confidences[i], round(x), round(y), round(x+w), round(y+h))
         if x<imgsize[0]/3:
-            msg["l"] = -0.5
-            msg["r"] = 0.5
-            st = str(msg)
-            a = ' '.join(format(ord(x),'b') for x in st)
-            # ws.send(json.dumps(msg))
-            print(a)
-            #print("left")
+            WheelControl["l"] = -0.5
+            WheelControl["r"] = 0.5
+            print("left")
         elif x>imgsize[0]*0.6666:
-            msg["l"] = 0.5
-            msg["r"] = -0.5
-            st = str(msg)
-            a = ' '.join(format(ord(x),'b') for x in st)
-            # ws.send(json.dumps(msg))
-            print(a)
-            #print("right")
+            WheelControl["l"] = 0.5
+            WheelControl["r"] = -0.5
+            print("right")
         else:
-            msg["l"] = 0
-            msg["r"] = 0
-            st = str(msg)
-            a = ' '.join(format(ord(x),'b') for x in st)
-            # ws.send(json.dumps(msg))
-            print(a)
-            #print("straing")
+            WheelControl["l"] = 0
+            WheelControl["r"] = 0
+            print("straight")
+        
+        SendMsgToServer(WheelControl)
    
     # Put efficiency information.
     t, _ = net.getPerfProfile()
