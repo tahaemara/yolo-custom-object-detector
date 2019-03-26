@@ -15,9 +15,14 @@ ap.add_argument('-cl', '--classes',
                 help = 'path to objects.names',default="custom/objects.names")
 args = ap.parse_args()
 
+ap.add_argument('-s', '--server',
+                help = 'yes to connect to server, no to not', default='0')
+
+
 # Connect to the Rover control server through a websocket
-ws = websocket.create_connection("ws://192.168.0.107:9020/locomotion")
-WheelControl = {"l":0, "r":0}
+if 'yes' in args.server:
+    ws = websocket.create_connection("ws://192.168.0.107:9020/locomotion")
+    WheelControl = {"l":0, "r":0}
 
 
 # Get names of output layers, output for YOLOv3 is ['yolo_16', 'yolo_23']
