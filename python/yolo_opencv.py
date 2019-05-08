@@ -16,7 +16,7 @@ ap.add_argument('-cl', '--classes',
 args = ap.parse_args()
 
 ap.add_argument('-s', '--server',
-                help = 'yes to connect to server, no to not', default='0')
+                help = 'yes to connect to server, no to not', default='no')
 
 
 # Connect to the Rover control server through a websocket
