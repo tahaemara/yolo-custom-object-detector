@@ -13,10 +13,9 @@ ap.add_argument('-w', '--weights',
                 help = 'path to pre-trained weights', default="../backup/yolov3-tiny.backup")
 ap.add_argument('-cl', '--classes', 
                 help = 'path to objects.names',default="custom/objects.names")
-args = ap.parse_args()
-
 ap.add_argument('-s', '--server',
                 help = 'yes to connect to server, no to not', default='no')
+args = ap.parse_args()
 
 
 # Connect to the Rover control server through a websocket
@@ -44,10 +43,10 @@ print(classes)
 COLORS = np.random.uniform(0, 255, size=(len(classes), 3))
 
 # Define network from configuration file and load the weights from the given weights file
-net = cv2.dnn.readNet(args.weights,args.config)
+net = cv2.dnn.readNet(args.weights, args.config)
 
 # Define video capture for default cam
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(1)
 
 
 while cv2.waitKey(1) < 0 or False:
