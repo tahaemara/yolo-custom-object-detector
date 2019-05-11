@@ -61,16 +61,20 @@ RUN  	cd / \
 	&& cd darknet \
 	&& sed -i 's/GPU=0/GPU=1/g' Makefile \
 	&& sed -i 's/OPENCV=0/OPENCV=1/g' Makefile \
-	&& make 
+	&& make \
+  # convolutional weights that are pre-trained on Imagenet or training
+  && wget https://pjreddie.com/media/files/darknet53.conv.74
 
-###Download YOLO v3 tiny weights  
+### Download YOLO v3 tiny weights  
 RUN 	cd / \
 	&& mkdir weights && cd /weights \
-	&& wget https://pjreddie.com/media/files/yolov3-tiny.weights 
+	&& wget https://pjreddie.com/media/files/yolov3-tiny.weights
 
 #RUN   	export PATH=$PATH:/darknet/darknet
 RUN apt-get install -qqy x11-apps 
 
+### Download 
+RUN cd /darknet \
 
 
 WORKDIR /darknet

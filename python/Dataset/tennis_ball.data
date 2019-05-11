@@ -1,0 +1,5 @@
+classes=1
+train=/home/vikram/dev/src/github.com/pjreddie/darknet/tennis_ball/train/train.txt
+valid=/home/vikram/dev/src/github.com/pjreddie/darknet/tennis_ball/valid/valid.txt
+names=/home/vikram/dev/src/github.com/pjreddie/darknet/tennis_ball/classes.txt
+backup=/home/vikram/dev/src/github.com/pjreddie/darknet/tennis_ball/weights/
