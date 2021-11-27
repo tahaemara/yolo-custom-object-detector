@@ -1,17 +1,20 @@
 import cv2
 import argparse
 import numpy as np
+import xlsxwriter
+import datetime
+from openpyxl import Workbook
+
+
 
 ap = argparse.ArgumentParser()
 ap.add_argument('-c', '--config', 
-                help = 'path to config file', default="/path/to/yolov3-tiny.cfg")
+                help = 'path to yolo config file', default=r'C:\Users\saktheeswaran\Desktop\yolo-tinty\yolov3-tiny.cfg')
 ap.add_argument('-w', '--weights', 
-                help = 'path to pre-trained weights', default="/path/to/yolov3-tiny_final.weights")
+                help = 'path to yolo pre-trained weights', default=r'C:\Users\saktheeswaran\Desktop\yolo-tinty\yolov3-tiny.weights')
 ap.add_argument('-cl', '--classes', 
-                help = 'path to objects.names',default="/path/to/objects.names")
+                help = 'path to text file containing class names',default=r'C:\Users\saktheeswaran\Desktop\yolo-tinty\coco.names')
 args = ap.parse_args()
-
-
 # Get names of output layers, output for YOLOv3 is ['yolo_16', 'yolo_23']
 def getOutputsNames(net):
     layersNames = net.getLayerNames()
@@ -49,11 +52,15 @@ net = cv2.dnn.readNet(args.weights,args.config)
 # Define video capture for default cam
 cap = cv2.VideoCapture(0)
 
-
-while cv2.waitKey(1) < 0 or False:
+book = Workbook()
+sheet = book.active
+while cv2.waitKey(1) < 0:
     
     hasframe, image = cap.read()
-    image=cv2.resize(image, (416, 416)) 
+    #image=cv2.resize(image, (620, 480)) 
+
+    if hasframe is None:
+        workbook.close()
     
     blob = cv2.dnn.blobFromImage(image, 1.0/255.0, (416,416), [0,0,0], True, crop=False)
     Width = image.shape[1]
@@ -77,7 +84,6 @@ while cv2.waitKey(1) < 0 or False:
     # For tiny YOLOv3, the first output will be 507x6 = 13x13x18
     # 18=3*(4+1+1) 4 boundingbox offsets, 1 objectness prediction, and 1 class score.
     # and the second output will be = 2028x6=26x26x18 (18=3*6) 
-    
     for out in outs: 
         #print(out.shape)
         for detection in out:
@@ -87,6 +93,8 @@ while cv2.waitKey(1) < 0 or False:
             class_id = np.argmax(scores)
             confidence = scores[class_id]
             if confidence > 0.5:
+                time_ref = datetime.datetime.strftime(datetime.datetime.now(), "%Y-%m-%d %H:%M:%S")
+                sheet.append((classes[class_id], time_ref ))
                 center_x = int(detection[0] * Width)
                 center_y = int(detection[1] * Height)
                 w = int(detection[2] * Width)
@@ -96,8 +104,9 @@ while cv2.waitKey(1) < 0 or False:
                 class_ids.append(class_id)
                 confidences.append(float(confidence))
                 boxes.append([x, y, w, h])
+    book.save('detections.xlsx')
     
-    # apply non-maximum suppression algorithm on the bounding boxes
+    # apply  non-maximum suppression algorithm on the bounding boxes
     indices = cv2.dnn.NMSBoxes(boxes, confidences, conf_threshold, nms_threshold)
     
     for i in indices:
@@ -112,6 +121,6 @@ while cv2.waitKey(1) < 0 or False:
     # Put efficiency information.
     t, _ = net.getPerfProfile()
     label = 'Inference time: %.2f ms' % (t * 1000.0 / cv2.getTickFrequency())
-    cv2.putText(image, label, (0, 15), cv2.FONT_HERSHEY_SIMPLEX, .6, (255, 0, 0))
+    cv2.putText(image, label, (0, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 0, 0))
     
     cv2.imshow(window_title, image)
